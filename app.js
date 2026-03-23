@@ -272,8 +272,144 @@ const i18n = {
   }
 };
 
+Object.assign(i18n.en, {
+  hero_lead:"Locked in together, your team searches for clues and solves puzzles to escape within 60 minutes. FUN - FOR ALL AGES AND LANGUAGES! MULTIPLE THEMES AVAILABLE!",
+  nav_location:"Location",
+  theme_label:"Theme",
+  theme_classic:"Classic",
+  theme_noir:"Noir",
+  theme_neon:"Neon",
+  fb_eyebrow:"Latest on Facebook",
+  fb_title:"See our newest updates",
+  fb_text:"This window loads the latest public posts from our Facebook page when the website opens.",
+  fb_cta:"Open Facebook",
+  pay_card:"Pay by card (PayPal)",
+  open_maps:"Open in Google Maps",
+  calc_title:"Players & price",
+  calc_players_label:"Players",
+  calc_prepay:"Prepay (VietQR)",
+  calc_arrival:"Pay on arrival",
+  calc_deposit:"Deposit only",
+  calc_option_deposit:"Deposit only",
+  calc_option_players_min:"{players} players (min charge {minPlayers})",
+  calc_option_players:"{players} players",
+  calc_note_deposit:"Deposit holds your slot. Final amount is paid on arrival.",
+  calc_note_min:"Minimum charge applies ({minPlayers} players). VietQR prepay is cheaper.",
+  calc_note_prepay:"VietQR prepay is cheaper."
+});
+
+Object.assign(i18n.vi, {
+  hero_lead:"C\u1ea3 nh\u00f3m c\u00f9ng b\u1ecb \"kh\u00f3a\" trong ph\u00f2ng \u2014 t\u00ecm manh m\u1ed1i, gi\u1ea3i c\u00e2u \u0111\u1ed1 v\u00e0 tho\u00e1t ra trong 60 ph\u00fat. VUI CHO M\u1ECCI \u0110\u1ED8 TU\u1ED4I V\u00C0 M\u1ECCI NG\u00D4N NG\u1EEE! NHI\u1EC0U CH\u1EE6 \u0110\u1EC0 KH\u00C1C NHAU!",
+  nav_location:"V\u1ecb tr\u00ed",
+  theme_label:"Giao di\u1ec7n",
+  theme_classic:"C\u1ed5 \u0111i\u1ec3n",
+  theme_noir:"Noir",
+  theme_neon:"Neon",
+  fb_eyebrow:"Facebook m\u1edbi nh\u1ea5t",
+  fb_title:"Xem c\u1eadp nh\u1eadt m\u1edbi nh\u1ea5t c\u1ee7a ch\u00fang t\u00f4i",
+  fb_text:"Khung n\u00e0y t\u1ea3i c\u00e1c b\u00e0i \u0111\u0103ng c\u00f4ng khai m\u1edbi nh\u1ea5t t\u1eeb trang Facebook c\u1ee7a ch\u00fang t\u00f4i khi website m\u1edf ra.",
+  fb_cta:"M\u1edf Facebook",
+  pay_card:"Thanh to\u00e1n b\u1eb1ng th\u1ebb (PayPal)",
+  open_maps:"M\u1edf Google Maps",
+  calc_title:"S\u1ed1 ng\u01b0\u1eddi & gi\u00e1",
+  calc_players_label:"S\u1ed1 ng\u01b0\u1eddi",
+  calc_prepay:"Tr\u1ea3 tr\u01b0\u1edbc (VietQR)",
+  calc_arrival:"Tr\u1ea3 khi \u0111\u1ebfn",
+  calc_deposit:"Ch\u1ec9 \u0111\u1eb7t c\u1ecdc",
+  calc_option_deposit:"Ch\u1ec9 \u0111\u1eb7t c\u1ecdc",
+  calc_option_players_min:"{players} ng\u01b0\u1eddi (t\u00ednh t\u1ed1i thi\u1ec3u {minPlayers})",
+  calc_option_players:"{players} ng\u01b0\u1eddi",
+  calc_note_deposit:"\u0110\u1eb7t c\u1ecdc gi\u1eef ch\u1ed7. Ph\u1ea7n c\u00f2n l\u1ea1i thanh to\u00e1n khi \u0111\u1ebfn.",
+  calc_note_min:"\u00c1p d\u1ee5ng m\u1ee9c t\u1ed1i thi\u1ec3u ({minPlayers} ng\u01b0\u1eddi). Tr\u1ea3 tr\u01b0\u1edbc VietQR r\u1ebb h\u01a1n.",
+  calc_note_prepay:"Tr\u1ea3 tr\u01b0\u1edbc VietQR r\u1ebb h\u01a1n."
+});
+
+Object.assign(i18n.ru, {
+  hero_lead:"\u0412\u043c\u0435\u0441\u0442\u0435 \u0437\u0430\u043f\u0435\u0440\u0442\u044b \u0432 \u043a\u043e\u043c\u043d\u0430\u0442\u0435 \u2014 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0435 \u043f\u043e\u0434\u0441\u043a\u0430\u0437\u043a\u0438, \u0440\u0435\u0448\u0430\u0439\u0442\u0435 \u0433\u043e\u043b\u043e\u0432\u043e\u043b\u043e\u043c\u043a\u0438 \u0438 \u0441\u0431\u0435\u0433\u0430\u0439\u0442\u0435 \u0437\u0430 60 \u043c\u0438\u043d\u0443\u0442. \u0412\u0415\u0421\u0415\u041b\u041e \u0414\u041b\u042f \u0412\u0421\u0415\u0425 \u0412\u041e\u0417\u0420\u0410\u0421\u0422\u041e\u0412 \u0418 \u042f\u0417\u042b\u041a\u041e\u0412!",
+  nav_location:"\u041b\u043e\u043a\u0430\u0446\u0438\u044f",
+  theme_label:"\u0422\u0435\u043c\u0430",
+  theme_classic:"\u041a\u043b\u0430\u0441\u0441\u0438\u043a\u0430",
+  theme_noir:"\u041d\u0443\u0430\u0440",
+  theme_neon:"\u041d\u0435\u043e\u043d",
+  fb_eyebrow:"\u041d\u043e\u0432\u043e\u0435 \u0432 Facebook",
+  fb_title:"\u0421\u043c\u043e\u0442\u0440\u0438\u0442\u0435 \u043d\u0430\u0448\u0438 \u0441\u0432\u0435\u0436\u0438\u0435 \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f",
+  fb_text:"\u042d\u0442\u043e \u043e\u043a\u043d\u043e \u0437\u0430\u0433\u0440\u0443\u0436\u0430\u0435\u0442 \u043d\u0430\u0448\u0438 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0435 \u043f\u0443\u0431\u043b\u0438\u0447\u043d\u044b\u0435 \u043f\u043e\u0441\u0442\u044b \u0438\u0437 Facebook \u043f\u0440\u0438 \u043e\u0442\u043a\u0440\u044b\u0442\u0438\u0438 \u0441\u0430\u0439\u0442\u0430.",
+  fb_cta:"\u041e\u0442\u043a\u0440\u044b\u0442\u044c Facebook",
+  pay_card:"\u041e\u043f\u043b\u0430\u0442\u0430 \u043a\u0430\u0440\u0442\u043e\u0439 (PayPal)",
+  open_maps:"\u041e\u0442\u043a\u0440\u044b\u0442\u044c Google Maps",
+  calc_title:"\u0418\u0433\u0440\u043e\u043a\u0438 \u0438 \u0446\u0435\u043d\u0430",
+  calc_players_label:"\u0418\u0433\u0440\u043e\u043a\u0438",
+  calc_prepay:"\u041f\u0440\u0435\u0434\u043e\u043f\u043b\u0430\u0442\u0430 (VietQR)",
+  calc_arrival:"\u041e\u043f\u043b\u0430\u0442\u0430 \u043d\u0430 \u043c\u0435\u0441\u0442\u0435",
+  calc_deposit:"\u0422\u043e\u043b\u044c\u043a\u043e \u0434\u0435\u043f\u043e\u0437\u0438\u0442",
+  calc_option_deposit:"\u0422\u043e\u043b\u044c\u043a\u043e \u0434\u0435\u043f\u043e\u0437\u0438\u0442",
+  calc_option_players_min:"{players} \u0438\u0433\u0440\u043e\u043a\u043e\u0432 (\u043c\u0438\u043d\u0438\u043c\u0443\u043c {minPlayers})",
+  calc_option_players:"{players} \u0438\u0433\u0440\u043e\u043a\u043e\u0432",
+  calc_note_deposit:"\u0414\u0435\u043f\u043e\u0437\u0438\u0442 \u0443\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u0442 \u0432\u0430\u0448 \u0441\u043b\u043e\u0442. \u041e\u0441\u0442\u0430\u0442\u043e\u043a \u043e\u043f\u043b\u0430\u0442\u044b \u043d\u0430 \u043c\u0435\u0441\u0442\u0435.",
+  calc_note_min:"\u0414\u0435\u0439\u0441\u0442\u0432\u0443\u0435\u0442 \u043c\u0438\u043d\u0438\u043c\u0430\u043b\u044c\u043d\u0430\u044f \u043e\u043f\u043b\u0430\u0442\u0430 ({minPlayers} \u0438\u0433\u0440\u043e\u043a\u0430). VietQR \u0434\u0435\u0448\u0435\u0432\u043b\u0435.",
+  calc_note_prepay:"\u041f\u0440\u0435\u0434\u043e\u043f\u043b\u0430\u0442\u0430 VietQR \u0434\u0435\u0448\u0435\u0432\u043b\u0435."
+});
+
+Object.assign(i18n.ko, {
+  hero_lead:"\ud300\uacfc \ud568\uaed8 \ub2e8\uc11c\ub97c \ucc3e\uace0 \ud37c\uc990\uc744 \ud480\uc5b4 60\ubd84 \uc548\uc5d0 \ud0c8\ucd9c\ud558\uc138\uc694. \ubaa8\ub4e0 \uc5f0\ub839\uacfc \uc5b8\uc5b4\ub97c \uc704\ud55c FUN!",
+  nav_location:"\uc704\uce58",
+  theme_label:"\ud14c\ub9c8",
+  theme_classic:"\uae30\ubcf8",
+  theme_noir:"\ub290\uc640\ub974",
+  theme_neon:"\ub124\uc628",
+  fb_eyebrow:"Facebook \ucd5c\uc2e0 \uc18c\uc2dd",
+  fb_title:"\ucd5c\uc2e0 \uc5c5\ub370\uc774\ud2b8\ub97c \ubcf4\uc138\uc694",
+  fb_text:"\uc774 \ucc3d\uc740 \uc6f9\uc0ac\uc774\ud2b8\uac00 \uc5f4\ub9b4 \ub54c Facebook \ud398\uc774\uc9c0\uc758 \ucd5c\uc2e0 \uacf5\uac1c \uac8c\uc2dc\ubb3c\uc744 \ubd88\ub7ec\uc635\ub2c8\ub2e4.",
+  fb_cta:"Facebook \uc5f4\uae30",
+  pay_card:"\uce74\ub4dc \uacb0\uc81c (PayPal)",
+  open_maps:"Google Maps \uc5f4\uae30",
+  calc_title:"\uc778\uc6d0 & \uac00\uaca9",
+  calc_players_label:"\uc778\uc6d0",
+  calc_prepay:"\uc120\uacb0\uc81c (VietQR)",
+  calc_arrival:"\ud604\uc7a5 \uacb0\uc81c",
+  calc_deposit:"\uc608\uc57d\uae08\ub9cc",
+  calc_option_deposit:"\uc608\uc57d\uae08\ub9cc",
+  calc_option_players_min:"{players}\uba85 (\ucd5c\uc18c {minPlayers}\uba85 \uc694\uae08)",
+  calc_option_players:"{players}\uba85",
+  calc_note_deposit:"\uc608\uc57d\uae08\uc73c\ub85c \uc2ac\ub86f\uc744 \uc7a1\uc544\ub461\ub2c8\ub2e4. \ub098\uba38\uc9c0\ub294 \ud604\uc7a5\uc5d0\uc11c \uacb0\uc81c\ud569\ub2c8\ub2e4.",
+  calc_note_min:"\ucd5c\uc18c \uc694\uae08\uc774 \uc801\uc6a9\ub429\ub2c8\ub2e4 ({minPlayers}\uba85). VietQR \uc120\uacb0\uc81c\uac00 \ub354 \uc800\ub834\ud569\ub2c8\ub2e4.",
+  calc_note_prepay:"VietQR \uc120\uacb0\uc81c\uac00 \ub354 \uc800\ub834\ud569\ub2c8\ub2e4."
+});
+
+Object.assign(i18n.en, {
+  hero_lead:"Locked in together, your team searches for clues and solves puzzles to escape within 60 minutes. FUN - FOR ALL AGES AND LANGUAGES! MULTIPLE THEMES AVAILABLE!"
+});
+
+Object.assign(i18n.vi, {
+  hero_lead:"C\u1ea3 nh\u00f3m c\u00f9ng b\u1ecb \"kh\u00f3a\" trong ph\u00f2ng \u2014 t\u00ecm manh m\u1ed1i, gi\u1ea3i c\u00e2u \u0111\u1ed1 v\u00e0 tho\u00e1t ra trong 60 ph\u00fat. VUI CHO M\u1ECCI \u0110\u1ED8 TU\u1ED4I V\u00C0 M\u1ECCI NG\u00D4N NG\u1EEE! NHI\u1EC0U CH\u1EE6 \u0110\u1EC0 KH\u00C1C NHAU!"
+});
+
+Object.assign(i18n.ru, {
+  hero_lead:"\u0412\u043c\u0435\u0441\u0442\u0435 \u0437\u0430\u043f\u0435\u0440\u0442\u044b \u0432 \u043a\u043e\u043c\u043d\u0430\u0442\u0435 \u2014 \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0435 \u043f\u043e\u0434\u0441\u043a\u0430\u0437\u043a\u0438, \u0440\u0435\u0448\u0430\u0439\u0442\u0435 \u0433\u043e\u043b\u043e\u0432\u043e\u043b\u043e\u043c\u043a\u0438 \u0438 \u0441\u0431\u0435\u0433\u0430\u0439\u0442\u0435 \u0437\u0430 60 \u043c\u0438\u043d\u0443\u0442. \u0412\u0415\u0421\u0415\u041B\u041E \u0414\u041B\u042F \u0412\u0421\u0415\u0425 \u0412\u041E\u0417\u0420\u0410\u0421\u0422\u041E\u0412 \u0418 \u042F\u0417\u042B\u041A\u041E\u0412! \u041D\u0415\u0421\u041A\u041E\u041B\u042C\u041A\u041E \u0422\u0415\u041C \u041D\u0410 \u0412\u042B\u0411\u041E\u0420!"
+});
+
+Object.assign(i18n.ko, {
+  hero_lead:"\ud300\uacfc \ud568\uaed8 \ub2e8\uc11c\ub97c \ucc3e\uace0 \ud37c\uc990\uc744 \ud480\uc5b4 60\ubd84 \uc548\uc5d0 \ud0c8\ucd9c\ud558\uc138\uc694. \ubaa8\ub4e0 \uc5f0\ub839\uacfc \uc5b8\uc5b4\ub97c \uc704\ud55c FUN! \uc5ec\ub7ec \ud14c\ub9c8 \uc774\uc6a9 \uac00\ub2a5!"
+});
+
+let CURRENT_LANG = "en";
+
+function formatTemplate(text, vars){
+  return String(text || "").replace(/\{(\w+)\}/g, (_, key) => (
+    vars && vars[key] !== undefined ? String(vars[key]) : ""
+  ));
+}
+
+function t(key, vars){
+  const dict = i18n[CURRENT_LANG] || i18n.en;
+  const fallback = i18n.en[key] !== undefined ? i18n.en[key] : key;
+  const value = dict[key] !== undefined ? dict[key] : fallback;
+  return formatTemplate(value, vars);
+}
+
 function applyLang(lang){
   const dict = i18n[lang] || i18n.en;
+  CURRENT_LANG = i18n[lang] ? lang : "en";
   document.documentElement.lang = (lang === "en") ? "en" : lang;
 
   document.querySelectorAll("[data-i18n]").forEach(el=>{
@@ -289,6 +425,7 @@ function applyLang(lang){
   const url = new URL(window.location.href);
   url.searchParams.set("lang", lang);
   history.replaceState({}, "", url.toString());
+  syncPriceCalculatorText();
   postToEmbeddedFrame({type:"setLang", lang});
 }
 
@@ -309,6 +446,36 @@ function setContactLinks(){
   document.querySelectorAll('[data-link="zalo"]').forEach(a=> a.href = SITE_LINKS.zalo || "#");
   document.querySelectorAll('[data-link="maps"]').forEach(a=> a.href = SITE_LINKS.maps || "#");
   document.querySelectorAll('[data-link="kakao"]').forEach(a=> a.href = SITE_LINKS.kakao || "#");
+}
+
+function syncFacebookPageEmbed(){
+  const facebookFrame = document.getElementById("facebookPageFrame");
+  if (!facebookFrame) return;
+
+  const pageUrl = SITE_LINKS.facebook || "";
+  if (!pageUrl){
+    facebookFrame.src = "about:blank";
+    facebookFrame.style.display = "none";
+    return;
+  }
+
+  const height = window.innerWidth <= 640 ? "540" : "620";
+  const params = new URLSearchParams({
+    href: pageUrl,
+    tabs: "timeline",
+    width: "500",
+    height,
+    small_header: "false",
+    adapt_container_width: "true",
+    hide_cover: "false",
+    show_facepile: "false"
+  });
+  const nextSrc = `https://www.facebook.com/plugins/page.php?${params.toString()}`;
+
+  facebookFrame.style.display = "block";
+  if (facebookFrame.getAttribute("src") !== nextSrc){
+    facebookFrame.setAttribute("src", nextSrc);
+  }
 }
 
 function postToEmbeddedFrame(message){
@@ -378,11 +545,18 @@ function setBookingAndQR(){
 function toggleDark(){
   const on = !document.body.classList.contains("dark");
   document.body.classList.toggle("dark", on);
+  document.body.dataset.theme = on ? "noir" : "classic";
   localStorage.setItem("dark", on ? "true" : "false");
+  localStorage.setItem("theme", on ? "noir" : "classic");
   const darkToggleButton = document.getElementById("dark-toggle");
   if (darkToggleButton){
     darkToggleButton.textContent = on ? "☀️" : "🌙";
   }
+  if (darkToggleButton){
+    darkToggleButton.textContent = on ? "Light" : "Dark";
+    darkToggleButton.setAttribute("aria-pressed", on ? "true" : "false");
+  }
+  postToEmbeddedFrame({type:"setTheme", theme:on ? "noir" : "classic"});
   postToEmbeddedFrame({type:"setDark", dark:on});
 }
 
@@ -471,6 +645,137 @@ function initPriceCalculator(){
   render();
 }
 
+const THEMES = {
+  classic: true,
+  noir: true,
+  neon: true
+};
+
+function applyTheme(theme){
+  const next = THEMES[theme] ? theme : "classic";
+  document.body.dataset.theme = next;
+  document.body.classList.toggle("dark", next !== "classic");
+
+  const themeSelect = document.getElementById("theme-select");
+  if (themeSelect && themeSelect.value !== next){
+    themeSelect.value = next;
+  }
+
+  localStorage.setItem("theme", next);
+  localStorage.setItem("dark", next === "classic" ? "false" : "true");
+  postToEmbeddedFrame({type:"setTheme", theme:next});
+}
+
+function getInitialTheme(){
+  const saved = localStorage.getItem("theme");
+  if (saved && THEMES[saved]) return saved;
+  if (localStorage.getItem("dark") === "true") return "noir";
+  return "classic";
+}
+
+function formatVND(n){
+  const amount = safeNumber(n);
+  try{
+    return new Intl.NumberFormat("vi-VN").format(amount) + "\u0111";
+  }catch(e){
+    return String(amount) + "\u0111";
+  }
+}
+
+const sitePriceCalc = {};
+
+function buildPriceCalculatorOptions(){
+  const sel = sitePriceCalc.sel;
+  if (!sel) return;
+
+  const selected = sel.value || "4";
+  sel.innerHTML = "";
+
+  {
+    const option = document.createElement("option");
+    option.value = "deposit";
+    option.textContent = t("calc_option_deposit");
+    sel.appendChild(option);
+  }
+
+  for (let i = 2; i <= 8; i++){
+    const option = document.createElement("option");
+    option.value = String(i);
+    option.textContent = i < MIN_CHARGE_PLAYERS
+      ? t("calc_option_players_min", { players: i, minPlayers: MIN_CHARGE_PLAYERS })
+      : t("calc_option_players", { players: i });
+    sel.appendChild(option);
+  }
+
+  if ([...sel.options].some(option => option.value === selected)){
+    sel.value = selected;
+  } else {
+    sel.value = "4";
+  }
+}
+
+function renderPriceCalculator(){
+  const sel = sitePriceCalc.sel;
+  const prepayEl = sitePriceCalc.prepayEl;
+  const arrivalEl = sitePriceCalc.arrivalEl;
+  const depEl = sitePriceCalc.depEl;
+  const noteEl = sitePriceCalc.noteEl;
+  if (!sel || !prepayEl || !arrivalEl || !depEl) return;
+
+  const value = String(sel.value || "");
+
+  if (value === "deposit"){
+    prepayEl.textContent = formatMoney(DEPOSIT_ONLY_VND);
+    arrivalEl.textContent = formatMoney(PRICE_ARRIVAL_PER_PERSON * MIN_CHARGE_PLAYERS);
+    depEl.textContent = formatMoney(DEPOSIT_ONLY_VND);
+    if (noteEl) noteEl.textContent = t("calc_note_deposit");
+    return;
+  }
+
+  const players = Math.max(0, safeNumber(parseInt(value, 10)));
+  const charged = Math.max(players, MIN_CHARGE_PLAYERS);
+  prepayEl.textContent = formatMoney(PRICE_VIETQR_PREPAY_PER_PERSON * charged);
+  arrivalEl.textContent = formatMoney(PRICE_ARRIVAL_PER_PERSON * charged);
+  depEl.textContent = formatMoney(DEPOSIT_ONLY_VND);
+  if (noteEl){
+    noteEl.textContent = players < MIN_CHARGE_PLAYERS
+      ? t("calc_note_min", { minPlayers: MIN_CHARGE_PLAYERS })
+      : t("calc_note_prepay");
+  }
+}
+
+function syncPriceCalculatorText(){
+  if (!sitePriceCalc.sel) return;
+
+  const titleEl = document.getElementById("calcTitle");
+  const playersLabelEl = document.getElementById("calcPlayersLabel");
+  const prepayLabelEl = document.getElementById("calcPrepayLabel");
+  const arrivalLabelEl = document.getElementById("calcArrivalLabel");
+  const depositLabelEl = document.getElementById("calcDepositLabel");
+
+  if (titleEl) titleEl.textContent = t("calc_title");
+  if (playersLabelEl) playersLabelEl.textContent = t("calc_players_label");
+  if (prepayLabelEl) prepayLabelEl.textContent = t("calc_prepay");
+  if (arrivalLabelEl) arrivalLabelEl.textContent = t("calc_arrival");
+  if (depositLabelEl) depositLabelEl.textContent = t("calc_deposit");
+  sitePriceCalc.sel.setAttribute("aria-label", t("calc_players_label"));
+
+  buildPriceCalculatorOptions();
+  renderPriceCalculator();
+}
+
+function initPriceCalculator(){
+  sitePriceCalc.sel = document.getElementById("calcPlayers");
+  sitePriceCalc.prepayEl = document.getElementById("calcPrepay");
+  sitePriceCalc.arrivalEl = document.getElementById("calcArrival");
+  sitePriceCalc.depEl = document.getElementById("calcDeposit");
+  sitePriceCalc.noteEl = document.getElementById("calcNote");
+  if (!sitePriceCalc.sel || !sitePriceCalc.prepayEl || !sitePriceCalc.arrivalEl || !sitePriceCalc.depEl) return;
+
+  sitePriceCalc.sel.addEventListener("change", renderPriceCalculator);
+  syncPriceCalculatorText();
+}
+
 if (document.getElementById("year")){
   document.getElementById("year").textContent = new Date().getFullYear();
 }
@@ -480,11 +785,18 @@ if (document.getElementById("dark-toggle")){
 }
 
 setContactLinks();
+syncFacebookPageEmbed();
 setBookingAndQR();
 initPriceCalculator();
 syncFooterLogo();
 applyLang(getInitialLang());
-if (localStorage.getItem("dark")==="true") toggleDark();
+if (
+  localStorage.getItem("dark") === "true" ||
+  localStorage.getItem("theme") === "noir" ||
+  localStorage.getItem("theme") === "neon"
+){
+  toggleDark();
+}
 
 
 // Mobile nav toggle
