@@ -6,7 +6,7 @@ const SITE_LINKS = {
   facebook: "https://www.facebook.com/profile.php?id=61588050163602",
   zalo: "https://zalo.me/0393690550",
   kakao: "http://dn.kakao.com",
-  maps: "https://share.google/l7ahE6OOe49xkXY6g"
+  maps: "https://www.google.com/maps/search/?api=1&query=Escape%20Room%20Nha%20Trang%2C%20STH32B.15%2C%20%C4%91%C6%B0%E1%BB%9Dng%2035%2C%20khu%20%C4%91%C3%B4%20th%E1%BB%8B%20L%C3%AA%2C%20Nam%20Nha%20Trang%2C%20Kh%C3%A1nh%20H%C3%B2a%2057136%2C%20Nha%20Trang%2C%20Kh%C3%A1nh%20H%C3%B2a%20650000%2C%2065HH%2B4V%20Nam%20Nha%20Trang%2C%20Khanh%20Hoa%2C%20Vietnam"
 };
 
 // Booking web app (Google Apps Script web app URL)
@@ -392,6 +392,42 @@ Object.assign(i18n.ko, {
   hero_lead:"\ud300\uacfc \ud568\uaed8 \ub2e8\uc11c\ub97c \ucc3e\uace0 \ud37c\uc990\uc744 \ud480\uc5b4 60\ubd84 \uc548\uc5d0 \ud0c8\ucd9c\ud558\uc138\uc694. \ubaa8\ub4e0 \uc5f0\ub839\uacfc \uc5b8\uc5b4\ub97c \uc704\ud55c FUN! \uc5ec\ub7ec \ud14c\ub9c8 \uc774\uc6a9 \uac00\ub2a5!"
 });
 
+Object.assign(i18n.en, {
+  fb_status_loading:"Loading public Facebook updates...",
+  fb_status_fallback:"Facebook preview may be blocked on this device.",
+  fb_fallback:"If Facebook does not load inside your browser, use the button below to open our page directly.",
+  map_status_loading:"Loading map...",
+  map_status_fallback:"Map preview may be blocked in this browser.",
+  map_fallback:"If the map does not load in your browser, use Get directions to open Google Maps directly."
+});
+
+Object.assign(i18n.vi, {
+  fb_status_loading:"Dang tai cap nhat cong khai tu Facebook...",
+  fb_status_fallback:"Ban xem truoc Facebook co the bi chan tren thiet bi nay.",
+  fb_fallback:"Neu Facebook khong hien thi trong trinh duyet cua ban, hay dung nut ben duoi de mo trang truc tiep.",
+  map_status_loading:"Dang tai ban do...",
+  map_status_fallback:"Ban xem truoc ban do co the bi chan trong trinh duyet nay.",
+  map_fallback:"Neu ban do khong tai trong trinh duyet cua ban, hay bam Get directions de mo Google Maps truc tiep."
+});
+
+Object.assign(i18n.ru, {
+  fb_status_loading:"Zagruzhayutsya publichnye obnovleniya Facebook...",
+  fb_status_fallback:"Predprosmotr Facebook mozhet byt zablokirovan na etom ustroystve.",
+  fb_fallback:"Esli Facebook ne zagruzhaetsya v vashem brauzere, ispolzuyte knopku nizhe, chtoby otkryt stranicu napryamuyu.",
+  map_status_loading:"Zagruzhaetsya karta...",
+  map_status_fallback:"Predprosmotr karty mozhet byt zablokirovan v etom brauzere.",
+  map_fallback:"Esli karta ne zagruzhaetsya v vashem brauzere, nazhmite Get directions, chtoby otkryt Google Maps napryamuyu."
+});
+
+Object.assign(i18n.ko, {
+  fb_status_loading:"Facebook gonggae eobdeiteureul bulleooneun jung...",
+  fb_status_fallback:"I gigi-eseo Facebook misebogiga chadan doel su isseumnida.",
+  fb_fallback:"Beuraujeo aneseo Facebookga yeolliji anhneun gyeongu, arae beoteuneul nulleo peijireul jikjeop yeoseyo.",
+  map_status_loading:"Jidoreul bulleooneun jung...",
+  map_status_fallback:"I beuraujeoeseo jido misebogiga chadan doel su isseumnida.",
+  map_fallback:"Beuraujeoeseo jidoga yeolliji anhneun gyeongu, Get directionsreul nulleo Google Mapsreul jikjeop yeoseyo."
+});
+
 let CURRENT_LANG = "en";
 
 function formatTemplate(text, vars){
@@ -414,7 +450,8 @@ function applyLang(lang){
 
   document.querySelectorAll("[data-i18n]").forEach(el=>{
     const key = el.getAttribute("data-i18n");
-    if (dict[key] !== undefined) el.textContent = dict[key];
+    const value = dict[key] !== undefined ? dict[key] : i18n.en[key];
+    if (value !== undefined) el.textContent = value;
   });
 
   document.querySelectorAll(".lang-btn").forEach(btn=>{
@@ -448,14 +485,58 @@ function setContactLinks(){
   document.querySelectorAll('[data-link="kakao"]').forEach(a=> a.href = SITE_LINKS.kakao || "#");
 }
 
+function clearEmbedTimer(wrapper){
+  if (wrapper && wrapper.__embedTimer){
+    window.clearTimeout(wrapper.__embedTimer);
+    wrapper.__embedTimer = 0;
+  }
+}
+
+function setEmbedState(wrapperId, state, key){
+  const wrapper = document.getElementById(wrapperId);
+  if (!wrapper) return;
+
+  wrapper.dataset.embedState = state;
+
+  const status = wrapper.querySelector(".embed-status");
+  if (status && key){
+    status.setAttribute("data-i18n", key);
+    status.textContent = t(key);
+  }
+}
+
+function watchEmbed(iframe, wrapperId, loadingKey, fallbackKey, timeoutMs){
+  const wrapper = document.getElementById(wrapperId);
+  if (!iframe || !wrapper) return;
+
+  clearEmbedTimer(wrapper);
+  setEmbedState(wrapperId, "loading", loadingKey);
+
+  iframe.onload = function(){
+    clearEmbedTimer(wrapper);
+    wrapper.dataset.embedState = "ready";
+  };
+
+  iframe.onerror = function(){
+    clearEmbedTimer(wrapper);
+    setEmbedState(wrapperId, "fallback", fallbackKey);
+  };
+
+  wrapper.__embedTimer = window.setTimeout(function(){
+    if (wrapper.dataset.embedState !== "ready"){
+      setEmbedState(wrapperId, "fallback", fallbackKey);
+    }
+  }, timeoutMs || 5000);
+}
+
 function syncFacebookPageEmbed(){
   const facebookFrame = document.getElementById("facebookPageFrame");
   if (!facebookFrame) return;
 
   const pageUrl = SITE_LINKS.facebook || "";
   if (!pageUrl){
-    facebookFrame.src = "about:blank";
-    facebookFrame.style.display = "none";
+    facebookFrame.setAttribute("src", "about:blank");
+    setEmbedState("facebookEmbedWrap", "fallback", "fb_status_fallback");
     return;
   }
 
@@ -471,10 +552,47 @@ function syncFacebookPageEmbed(){
     show_facepile: "false"
   });
   const nextSrc = `https://www.facebook.com/plugins/page.php?${params.toString()}`;
+  const currentSrc = facebookFrame.getAttribute("src") || "";
 
-  facebookFrame.style.display = "block";
-  if (facebookFrame.getAttribute("src") !== nextSrc){
+  if (currentSrc !== nextSrc){
+    watchEmbed(facebookFrame, "facebookEmbedWrap", "fb_status_loading", "fb_status_fallback", 5500);
     facebookFrame.setAttribute("src", nextSrc);
+    return;
+  }
+
+  if (currentSrc && currentSrc !== "about:blank"){
+    const wrapper = document.getElementById("facebookEmbedWrap");
+    if (wrapper){
+      clearEmbedTimer(wrapper);
+      wrapper.dataset.embedState = "ready";
+    }
+  }
+}
+
+function syncMapEmbed(){
+  const mapFrame = document.getElementById("mapFrame");
+  if (!mapFrame) return;
+
+  const nextSrc = mapFrame.getAttribute("data-src") || "";
+  if (!nextSrc){
+    mapFrame.setAttribute("src", "about:blank");
+    setEmbedState("mapFrameWrap", "fallback", "map_status_fallback");
+    return;
+  }
+
+  const currentSrc = mapFrame.getAttribute("src") || "";
+  if (currentSrc !== nextSrc){
+    watchEmbed(mapFrame, "mapFrameWrap", "map_status_loading", "map_status_fallback", 4500);
+    mapFrame.setAttribute("src", nextSrc);
+    return;
+  }
+
+  if (currentSrc && currentSrc !== "about:blank"){
+    const wrapper = document.getElementById("mapFrameWrap");
+    if (wrapper){
+      clearEmbedTimer(wrapper);
+      wrapper.dataset.embedState = "ready";
+    }
   }
 }
 
@@ -549,9 +667,6 @@ function toggleDark(){
   localStorage.setItem("dark", on ? "true" : "false");
   localStorage.setItem("theme", on ? "noir" : "classic");
   const darkToggleButton = document.getElementById("dark-toggle");
-  if (darkToggleButton){
-    darkToggleButton.textContent = on ? "☀️" : "🌙";
-  }
   if (darkToggleButton){
     darkToggleButton.textContent = on ? "Light" : "Dark";
     darkToggleButton.setAttribute("aria-pressed", on ? "true" : "false");
@@ -786,6 +901,7 @@ if (document.getElementById("dark-toggle")){
 
 setContactLinks();
 syncFacebookPageEmbed();
+syncMapEmbed();
 setBookingAndQR();
 initPriceCalculator();
 syncFooterLogo();
@@ -801,7 +917,41 @@ if (
 
 // Mobile nav toggle
 const __navToggle = document.getElementById('nav-toggle');
-if (__navToggle){
-  __navToggle.addEventListener('click', ()=> document.body.classList.toggle('nav-open'));
-  document.querySelectorAll('.nav a').forEach(a=> a.addEventListener('click', ()=> document.body.classList.remove('nav-open')));
+function closeNav(){
+  document.body.classList.remove('nav-open');
+  if (__navToggle){
+    __navToggle.setAttribute('aria-expanded', 'false');
+  }
 }
+
+if (__navToggle){
+  __navToggle.addEventListener('click', ()=>{
+    const willOpen = !document.body.classList.contains('nav-open');
+    document.body.classList.toggle('nav-open', willOpen);
+    __navToggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  });
+  document.querySelectorAll('.nav a').forEach(a=> a.addEventListener('click', closeNav));
+  document.addEventListener('click', event=>{
+    if (!document.body.classList.contains('nav-open')) return;
+    if (event.target.closest('.topbar-inner')) return;
+    closeNav();
+  });
+  document.addEventListener('keydown', event=>{
+    if (event.key === 'Escape'){
+      closeNav();
+    }
+  });
+  window.addEventListener('resize', ()=>{
+    if (window.innerWidth > 900){
+      closeNav();
+    }
+  });
+}
+
+let __embedResizeTimer = 0;
+window.addEventListener('resize', ()=>{
+  window.clearTimeout(__embedResizeTimer);
+  __embedResizeTimer = window.setTimeout(()=>{
+    syncFacebookPageEmbed();
+  }, 150);
+});

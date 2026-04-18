@@ -1,0 +1,1024 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      :root{
+        --bg0:#070b12;
+        --bg1:#0c1420;
+        --bg2:#121d2c;
+        --panel:rgba(255,255,255,.08);
+        --panel-strong:rgba(255,255,255,.12);
+        --border:rgba(255,255,255,.14);
+        --text:#f5f7fb;
+        --muted:rgba(245,247,251,.68);
+        --green:#6ae9aa;
+        --amber:#ffd166;
+        --red:#ff7b85;
+        --blue:#79b7ff;
+        --shadow:0 18px 46px rgba(0,0,0,.28);
+        --radius:20px;
+      }
+
+      *{ box-sizing:border-box; }
+
+      body{
+        margin:0;
+        min-height:100vh;
+        font-family:Inter, system-ui, sans-serif;
+        color:var(--text);
+        background:
+          radial-gradient(1000px 700px at 10% 0%, rgba(63,124,255,.22), transparent 58%),
+          radial-gradient(900px 700px at 100% 0%, rgba(13,180,142,.16), transparent 54%),
+          linear-gradient(180deg, var(--bg1), var(--bg0));
+      }
+
+      a{ color:inherit; }
+
+      .shell{
+        width:min(1180px, calc(100% - 24px));
+        margin:0 auto;
+        padding:24px 0 40px;
+      }
+
+      .hero{
+        display:flex;
+        align-items:flex-start;
+        justify-content:space-between;
+        gap:16px;
+        margin-bottom:18px;
+      }
+
+      .eyebrow{
+        margin:0 0 8px;
+        color:var(--blue);
+        font-size:12px;
+        font-weight:800;
+        letter-spacing:.18em;
+        text-transform:uppercase;
+      }
+
+      h1{
+        margin:0;
+        font-size:clamp(28px, 5vw, 44px);
+        line-height:1.02;
+      }
+
+      .sub{
+        max-width:720px;
+        margin:10px 0 0;
+        color:var(--muted);
+        font-size:15px;
+        line-height:1.5;
+      }
+
+      .jump{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        padding:12px 16px;
+        border-radius:999px;
+        border:1px solid var(--border);
+        background:rgba(255,255,255,.08);
+        text-decoration:none;
+        font-weight:700;
+        white-space:nowrap;
+      }
+
+      .panel{
+        border:1px solid var(--border);
+        background:linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.06));
+        border-radius:var(--radius);
+        box-shadow:var(--shadow);
+        padding:18px;
+        backdrop-filter:blur(14px);
+      }
+
+      .authRow,
+      .toolbar{
+        display:grid;
+        grid-template-columns:minmax(240px, 360px) auto;
+        gap:12px;
+        align-items:end;
+      }
+
+      label{
+        display:block;
+        margin:0 0 8px;
+        color:var(--muted);
+        font-size:12px;
+        font-weight:700;
+      }
+
+      input{
+        width:100%;
+        padding:13px 14px;
+        border-radius:14px;
+        border:1px solid var(--border);
+        background:rgba(0,0,0,.25);
+        color:var(--text);
+        font:inherit;
+      }
+
+      button{
+        border:1px solid var(--border);
+        background:rgba(255,255,255,.08);
+        color:var(--text);
+        font:inherit;
+        font-weight:800;
+        border-radius:14px;
+        padding:13px 16px;
+        cursor:pointer;
+      }
+
+      button:hover{ background:rgba(255,255,255,.12); }
+      button:disabled{
+        opacity:.5;
+        cursor:not-allowed;
+      }
+
+      .hint{
+        margin:10px 0 0;
+        color:var(--muted);
+        font-size:12px;
+      }
+
+      .notice{
+        margin-top:12px;
+        padding:12px 14px;
+        border-radius:14px;
+        font-size:13px;
+        font-weight:700;
+        display:none;
+      }
+
+      .notice.show{ display:block; }
+      .notice.error{ background:rgba(255,123,133,.14); color:#ffd5d9; }
+      .notice.success{ background:rgba(106,233,170,.14); color:#d7ffea; }
+      .notice.info{ background:rgba(121,183,255,.14); color:#dfeeff; }
+
+      .hidden{ display:none; }
+
+      .summary{
+        margin-top:18px;
+        display:grid;
+        grid-template-columns:repeat(4, minmax(0, 1fr));
+        gap:12px;
+      }
+
+      .summaryCard{
+        border:1px solid var(--border);
+        background:rgba(255,255,255,.07);
+        border-radius:18px;
+        padding:16px;
+      }
+
+      .summaryLabel{
+        color:var(--muted);
+        font-size:12px;
+        font-weight:700;
+        text-transform:uppercase;
+        letter-spacing:.08em;
+      }
+
+      .summaryValue{
+        margin-top:8px;
+        font-size:34px;
+        font-weight:900;
+      }
+
+      .sectionHead{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:12px;
+        margin-bottom:14px;
+      }
+
+      .sectionTitle{
+        margin:0;
+        font-size:20px;
+      }
+
+      .sectionHint{
+        color:var(--muted);
+        font-size:13px;
+      }
+
+      .slots{
+        margin-top:18px;
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+        gap:12px;
+      }
+
+      .slot{
+        border:1px solid var(--border);
+        border-radius:18px;
+        padding:16px;
+        background:rgba(255,255,255,.05);
+      }
+
+      .slot.open{ box-shadow:inset 0 0 0 1px rgba(106,233,170,.18); }
+      .slot.blocked{
+        border-color:rgba(255,123,133,.32);
+        background:rgba(255,123,133,.12);
+        box-shadow:inset 0 0 0 1px rgba(255,123,133,.18);
+      }
+      .slot.approved{
+        border-color:rgba(106,233,170,.32);
+        background:rgba(106,233,170,.11);
+        box-shadow:inset 0 0 0 1px rgba(106,233,170,.18);
+      }
+      .slot.tooSoon{ box-shadow:inset 0 0 0 1px rgba(255,209,102,.16); }
+      .slot.approved .slotTime,
+      .slot.approved .slotState{
+        color:#d7ffea;
+      }
+      .slot.blocked .slotTime,
+      .slot.blocked .slotState{
+        color:#ffd8dc;
+      }
+
+      .slotTime{
+        font-size:22px;
+        font-weight:900;
+        line-height:1.2;
+      }
+
+      .slotState{
+        margin-top:6px;
+        font-size:14px;
+        font-weight:700;
+      }
+
+      .slotMeta{
+        margin-top:10px;
+        color:var(--muted);
+        font-size:12px;
+        line-height:1.45;
+      }
+
+      .slotAction{
+        width:100%;
+        margin-top:14px;
+      }
+
+      .tabs{
+        display:flex;
+        flex-wrap:wrap;
+        gap:8px;
+      }
+
+      .dayActions{
+        margin-top:14px;
+        display:flex;
+        flex-wrap:wrap;
+        gap:10px;
+      }
+
+      .dayActions button{
+        min-width:170px;
+      }
+
+      .tab{
+        padding:10px 14px;
+        border-radius:999px;
+        background:rgba(255,255,255,.06);
+      }
+
+      .tab.active{
+        background:rgba(121,183,255,.16);
+        border-color:rgba(121,183,255,.32);
+      }
+
+      .bookings{
+        margin-top:18px;
+        display:grid;
+        gap:12px;
+      }
+
+      .booking{
+        border:1px solid var(--border);
+        border-radius:18px;
+        padding:16px;
+        background:rgba(255,255,255,.05);
+      }
+
+      .booking.deniedCard{
+        border-color:rgba(255,123,133,.28);
+        background:rgba(255,123,133,.10);
+        box-shadow:inset 0 0 0 1px rgba(255,123,133,.12);
+      }
+
+      .bookingTop{
+        display:flex;
+        align-items:flex-start;
+        justify-content:space-between;
+        gap:12px;
+      }
+
+      .bookingTitle{
+        margin:0;
+        font-size:18px;
+        font-weight:800;
+      }
+
+      .bookingSub{
+        margin-top:4px;
+        color:var(--muted);
+        font-size:13px;
+      }
+
+      .badge{
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        padding:7px 10px;
+        border-radius:999px;
+        font-size:12px;
+        font-weight:900;
+        text-transform:uppercase;
+        letter-spacing:.06em;
+      }
+
+      .badge.pending{ background:rgba(255,209,102,.16); color:#ffe7a3; }
+      .badge.approved{ background:rgba(121,183,255,.16); color:#dcecff; }
+      .badge.denied{ background:rgba(255,123,133,.16); color:#ffd8dc; }
+
+      .bookingGrid{
+        margin-top:14px;
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:10px 14px;
+      }
+
+      .field{
+        padding:12px;
+        border-radius:14px;
+        background:rgba(0,0,0,.18);
+      }
+
+      .fieldLabel{
+        color:var(--muted);
+        font-size:11px;
+        font-weight:700;
+        text-transform:uppercase;
+        letter-spacing:.08em;
+      }
+
+      .fieldValue{
+        margin-top:6px;
+        font-size:14px;
+        font-weight:700;
+        line-height:1.45;
+        word-break:break-word;
+      }
+
+      .actions{
+        margin-top:14px;
+        display:flex;
+        flex-wrap:wrap;
+        gap:10px;
+      }
+
+      .actions button{
+        min-width:120px;
+      }
+
+      .empty{
+        padding:18px;
+        border-radius:16px;
+        background:rgba(0,0,0,.18);
+        color:var(--muted);
+        text-align:center;
+        font-weight:700;
+      }
+
+      @media (max-width: 920px){
+        .summary{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+      }
+
+      @media (max-width: 760px){
+        .hero,
+        .authRow,
+        .toolbar,
+        .bookingTop{
+          grid-template-columns:1fr;
+          display:grid;
+        }
+
+        .bookingGrid{
+          grid-template-columns:1fr;
+        }
+
+        .summary{
+          grid-template-columns:1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Escape Room Admin</p>
+          <h1>Bookings and availability</h1>
+          <p class="sub">Review pending requests, confirm bookings, move denied requests into a red holding section for 24 hours, and block or reopen buffered game slots without changing the public booking flow.</p>
+        </div>
+        <a class="jump" href="?">Open public booking page</a>
+      </div>
+
+      <div class="panel">
+        <div class="authRow">
+          <div>
+            <label for="adminCode">Admin code</label>
+            <input id="adminCode" type="password" autocomplete="current-password" />
+          </div>
+          <button id="loadDashboardBtn" type="button">Load dashboard</button>
+        </div>
+        <p class="hint">Set the real value in <code>Code.gs</code> by changing <code>ADMIN_ACCESS_CODE</code> before you deploy.</p>
+        <div id="authNotice" class="notice"></div>
+      </div>
+
+      <div id="dashboard" class="hidden">
+        <div class="panel" style="margin-top:18px;">
+          <div class="toolbar">
+            <div>
+              <label for="adminDate">Date</label>
+              <input id="adminDate" type="date" />
+            </div>
+            <button id="refreshDashboardBtn" type="button">Refresh</button>
+          </div>
+          <div id="dashboardNotice" class="notice"></div>
+        </div>
+
+        <div id="summaryGrid" class="summary"></div>
+
+        <div class="panel" style="margin-top:18px;">
+          <div class="sectionHead">
+            <div>
+              <h2 class="sectionTitle">Availability controls</h2>
+              <div class="sectionHint">Block or reopen 60-minute games with a 30-minute buffer between start times. Confirmed bookings stay locked, and you can block the rest of a whole day in one click.</div>
+            </div>
+          </div>
+          <div class="dayActions">
+            <button id="blockDayBtn" type="button">Block whole day</button>
+            <button id="reopenDayBtn" type="button">Reopen whole day</button>
+          </div>
+          <div id="slotsGrid" class="slots"></div>
+        </div>
+
+        <div class="panel" style="margin-top:18px;">
+          <div class="sectionHead">
+            <div>
+              <h2 class="sectionTitle">Bookings</h2>
+              <div class="sectionHint">Each card shows the requested time, booked slot, name, phone number, note, and current status.</div>
+            </div>
+            <div class="tabs" id="tabs">
+              <button class="tab active" data-filter="PENDING" type="button">Pending</button>
+              <button class="tab" data-filter="APPROVED" type="button">Confirmed</button>
+              <button class="tab" data-filter="ALL" type="button">All</button>
+            </div>
+          </div>
+          <div id="bookingList" class="bookings"></div>
+        </div>
+
+        <div class="panel" style="margin-top:18px;">
+          <div class="sectionHead">
+            <div>
+              <h2 class="sectionTitle">Denied Bookings</h2>
+              <div class="sectionHint">Denied requests stay here in red for 24 hours, then the script removes them automatically.</div>
+            </div>
+          </div>
+          <div id="deniedList" class="bookings"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var state = {
+        code: "",
+        date: "",
+        filter: "PENDING",
+        bookings: [],
+        deniedBookings: [],
+        slots: [],
+        summary: null,
+        busy: false
+      };
+
+      function todayString() {
+        var now = new Date();
+        var yyyy = now.getFullYear();
+        var mm = String(now.getMonth() + 1).padStart(2, "0");
+        var dd = String(now.getDate()).padStart(2, "0");
+        return yyyy + "-" + mm + "-" + dd;
+      }
+
+      function setNotice(id, kind, text) {
+        var el = document.getElementById(id);
+        el.className = "notice" + (text ? " show " + kind : "");
+        el.textContent = text || "";
+      }
+
+      function clearNotices() {
+        setNotice("authNotice", "", "");
+        setNotice("dashboardNotice", "", "");
+      }
+
+      function getAdminCode() {
+        return String(document.getElementById("adminCode").value || state.code || "").trim();
+      }
+
+      function persistAdminCode(code) {
+        state.code = String(code || "").trim();
+        document.getElementById("adminCode").value = state.code;
+        try {
+          sessionStorage.setItem("escape_admin_code", state.code);
+        } catch (err) {
+          // Ignore storage errors in restricted browsers.
+        }
+      }
+
+      function applyDashboardPayload(payload, code, successText) {
+        var date = payload && payload.selectedDate ? payload.selectedDate : todayString();
+
+        if (code) {
+          persistAdminCode(code);
+        }
+
+        state.date = date;
+        state.bookings = payload && payload.bookings ? payload.bookings : [];
+        state.deniedBookings = payload && payload.deniedBookings ? payload.deniedBookings : [];
+        state.slots = payload && payload.slots ? payload.slots : [];
+        state.summary = payload && payload.summary ? payload.summary : null;
+
+        document.getElementById("adminDate").value = state.date;
+        document.getElementById("dashboard").classList.remove("hidden");
+
+        renderSummary();
+        renderSlots();
+        renderBookings();
+        renderDeniedBookings();
+
+        if (successText) {
+          setNotice("dashboardNotice", "success", successText);
+        } else {
+          setNotice("dashboardNotice", "", "");
+        }
+      }
+
+      function setDashboardBusy(isBusy) {
+        state.busy = !!isBusy;
+        document.getElementById("loadDashboardBtn").disabled = state.busy;
+        document.getElementById("refreshDashboardBtn").disabled = state.busy;
+        document.getElementById("blockDayBtn").disabled = state.busy;
+        document.getElementById("reopenDayBtn").disabled = state.busy;
+        Array.prototype.forEach.call(document.querySelectorAll("#slotsGrid button, #bookingList button, #deniedList button"), function(btn) {
+          btn.disabled = state.busy || btn.getAttribute("data-locked") === "1";
+        });
+      }
+
+      function translateError(err) {
+        var raw = "";
+        if (err && err.message) {
+          raw = String(err.message);
+        } else if (err !== undefined && err !== null) {
+          raw = String(err);
+        }
+
+        if (raw.indexOf("UNAUTHORIZED") !== -1) {
+          return "Admin code is incorrect.";
+        }
+        if (raw.indexOf("SLOT_HAS_APPROVED_BOOKING") !== -1) {
+          return "That slot already has a confirmed booking.";
+        }
+        if (raw.indexOf("SLOT_TAKEN") !== -1) {
+          return "That time already has a confirmed booking.";
+        }
+        if (raw.indexOf("SLOT_BLOCKED") !== -1) {
+          return "That time is blocked. Reopen it before confirming the booking.";
+        }
+        return raw || "Something went wrong.";
+      }
+
+      function loadDashboard(successText) {
+        var code = getAdminCode();
+        var date = document.getElementById("adminDate").value || state.date || todayString();
+
+        if (!code) {
+          setNotice("authNotice", "error", "Enter the admin code first.");
+          return;
+        }
+
+        clearNotices();
+        setDashboardBusy(true);
+        setNotice("dashboardNotice", "info", "Loading dashboard...");
+
+        google.script.run
+          .withSuccessHandler(function(res) {
+            setDashboardBusy(false);
+            if (!res || !res.ok) {
+              setNotice("dashboardNotice", "error", "Could not load the dashboard.");
+              return;
+            }
+
+            applyDashboardPayload(res, code, successText || "");
+            setNotice("authNotice", "success", "Dashboard loaded.");
+          })
+          .withFailureHandler(function(err) {
+            setDashboardBusy(false);
+            setNotice("authNotice", "error", translateError(err));
+            setNotice("dashboardNotice", "", "");
+          })
+          .apiAdminGetDashboard(code, date);
+      }
+
+      function renderSummary() {
+        var el = document.getElementById("summaryGrid");
+        var summary = state.summary || { total: 0, pending: 0, approved: 0, denied: 0 };
+        var cards = [
+          { label: "Total bookings", value: summary.total || 0 },
+          { label: "Pending", value: summary.pending || 0 },
+          { label: "Confirmed", value: summary.approved || 0 },
+          { label: "Denied", value: summary.denied || 0 }
+        ];
+
+        el.innerHTML = cards.map(function(card) {
+          return [
+            '<div class="summaryCard">',
+            '<div class="summaryLabel">' + escapeHtml(card.label) + '</div>',
+            '<div class="summaryValue">' + escapeHtml(String(card.value)) + '</div>',
+            '</div>'
+          ].join("");
+        }).join("");
+      }
+
+      function renderSlots() {
+        var el = document.getElementById("slotsGrid");
+
+        if (!state.slots.length) {
+          el.innerHTML = '<div class="empty">No slot data for this date.</div>';
+          return;
+        }
+
+        el.innerHTML = state.slots.map(function(slot) {
+          var slotClass = "open";
+          var stateText = "Open";
+          var detail = [];
+          var buttonText = "Block slot";
+          var disabled = false;
+          var nextBlocked = true;
+
+          if (slot.approvedBookingId) {
+            slotClass = "approved";
+            stateText = "Confirmed booking";
+            detail.push("Booking: " + slot.approvedName);
+            if (slot.approvedPhone) {
+              detail.push("Phone: " + slot.approvedPhone);
+            }
+            buttonText = "Confirmed";
+            disabled = true;
+          } else if (slot.blocked) {
+            slotClass = "blocked";
+            stateText = "Blocked";
+            buttonText = "Reopen slot";
+            nextBlocked = false;
+          } else if (slot.tooSoon) {
+            slotClass = "tooSoon";
+            stateText = "Too soon for same-day booking";
+          }
+
+          if (slot.pendingCount) {
+            detail.push("Pending requests: " + slot.pendingCount);
+          }
+          if (slot.deniedCount) {
+            detail.push("Denied requests: " + slot.deniedCount);
+          }
+          if (!detail.length) {
+            detail.push("No confirmed booking on this slot.");
+          }
+
+          return [
+            '<div class="slot ' + slotClass + '">',
+            '<div class="slotTime">' + escapeHtml(slot.label || slot.time) + '</div>',
+            '<div class="slotState">' + escapeHtml(stateText) + '</div>',
+            '<div class="slotMeta">' + escapeHtml(detail.join(" | ")) + '</div>',
+            '<button class="slotAction" type="button" data-time="' + escapeHtml(slot.time) + '" data-block="' + (nextBlocked ? "1" : "0") + '" data-locked="' + (disabled ? "1" : "0") + '"' + (disabled || state.busy ? " disabled" : "") + '>' + escapeHtml(buttonText) + '</button>',
+            '</div>'
+          ].join("");
+        }).join("");
+      }
+
+      function getFilteredBookings() {
+        if (state.filter === "ALL") {
+          return state.bookings.slice();
+        }
+        return state.bookings.filter(function(booking) {
+          return booking.status === state.filter;
+        });
+      }
+
+      function renderBookingCard(booking, options) {
+        var opts = options || {};
+        var badgeClass = booking.status === "APPROVED"
+          ? "approved"
+          : booking.status === "DENIED"
+            ? "denied"
+            : "pending";
+        var badgeLabel = booking.status === "APPROVED"
+          ? "Confirmed"
+          : booking.status === "DENIED"
+            ? "Denied"
+            : "Pending";
+        var cardClass = opts.denied ? "booking deniedCard" : "booking";
+        var extraFields = [];
+
+        if (opts.denied) {
+          extraFields.push(renderField("Denied at", booking.deniedAt || "-"));
+          extraFields.push(renderField("Auto remove", "24 hours after denial"));
+        }
+
+        return [
+          '<div class="' + cardClass + '">',
+          '<div class="bookingTop">',
+          '<div>',
+          '<h3 class="bookingTitle">' + escapeHtml(booking.name || "No name") + '</h3>',
+          '<div class="bookingSub">Requested: ' + escapeHtml(booking.createdAt || "-") + '</div>',
+          '</div>',
+          '<span class="badge ' + badgeClass + '">' + escapeHtml(badgeLabel) + '</span>',
+          '</div>',
+          '<div class="bookingGrid">',
+          renderField("Booked slot", booking.slotLabel || booking.time || "-"),
+          renderField("Booking date", booking.date || "-"),
+          renderField("Phone", booking.phone || "-"),
+          renderField("Email", booking.email || "-"),
+          renderField("Players / option", booking.players || "-"),
+          renderField("Booking ID", booking.bookingId || "-"),
+          renderField("Note", booking.note || "-"),
+          extraFields.join(""),
+          '</div>',
+          '<div class="actions">',
+          renderActionButton(booking.bookingId, "APPROVED", "Confirm", booking.status === "APPROVED"),
+          renderActionButton(booking.bookingId, "PENDING", "Set pending", booking.status === "PENDING"),
+          renderActionButton(booking.bookingId, "DENIED", "Deny", booking.status === "DENIED"),
+          '</div>',
+          '</div>'
+        ].join("");
+      }
+
+      function renderBookings() {
+        var el = document.getElementById("bookingList");
+        var bookings = getFilteredBookings();
+
+        if (!bookings.length) {
+          el.innerHTML = '<div class="empty">No bookings match this filter.</div>';
+          return;
+        }
+
+        el.innerHTML = bookings.map(function(booking) {
+          return renderBookingCard(booking, { denied: false });
+        }).join("");
+      }
+
+      function renderDeniedBookings() {
+        var el = document.getElementById("deniedList");
+        var bookings = state.deniedBookings || [];
+
+        if (!bookings.length) {
+          el.innerHTML = '<div class="empty">No denied bookings waiting for cleanup.</div>';
+          return;
+        }
+
+        el.innerHTML = bookings.map(function(booking) {
+          return renderBookingCard(booking, { denied: true });
+        }).join("");
+      }
+
+      function renderField(label, value) {
+        var safeValue = escapeHtml(value).replace(/\n/g, "<br>");
+        return [
+          '<div class="field">',
+          '<div class="fieldLabel">' + escapeHtml(label) + '</div>',
+          '<div class="fieldValue">' + safeValue + '</div>',
+          '</div>'
+        ].join("");
+      }
+
+      function renderActionButton(bookingId, status, label, disabled) {
+        return '<button type="button" data-booking-id="' + escapeHtml(bookingId) + '" data-status="' + escapeHtml(status) + '" data-locked="' + (disabled ? "1" : "0") + '"' + (disabled || state.busy ? " disabled" : "") + '>' + escapeHtml(label) + '</button>';
+      }
+
+      function updateBookingStatus(bookingId, status) {
+        if (!state.code) {
+          setNotice("authNotice", "error", "Load the dashboard first.");
+          return;
+        }
+
+        setDashboardBusy(true);
+        setNotice("dashboardNotice", "info", "Saving booking status...");
+
+        google.script.run
+          .withSuccessHandler(function(res) {
+            setDashboardBusy(false);
+            if (!res || !res.ok) {
+              setNotice("dashboardNotice", "error", humanizeBusinessError(res && res.error));
+              return;
+            }
+
+            loadDashboard(status === "DENIED" ? "Booking denied and moved to the denied list." : "Booking updated.");
+          })
+          .withFailureHandler(function(err) {
+            setDashboardBusy(false);
+            setNotice("dashboardNotice", "error", translateError(err));
+          })
+          .apiAdminUpdateBookingStatus(state.code, bookingId, status, state.date || todayString());
+      }
+
+      function updateSlot(time, shouldBlock) {
+        if (!state.code) {
+          setNotice("authNotice", "error", "Load the dashboard first.");
+          return;
+        }
+
+        setDashboardBusy(true);
+        setNotice("dashboardNotice", "info", shouldBlock ? "Blocking slot..." : "Reopening slot...");
+
+        google.script.run
+          .withSuccessHandler(function(res) {
+            setDashboardBusy(false);
+            if (!res || !res.ok) {
+              setNotice("dashboardNotice", "error", humanizeBusinessError(res && res.error));
+              return;
+            }
+
+            loadDashboard(shouldBlock ? "Slot blocked." : "Slot reopened.");
+          })
+          .withFailureHandler(function(err) {
+            setDashboardBusy(false);
+            setNotice("dashboardNotice", "error", translateError(err));
+          })
+          .apiAdminSetSlotBlocked(state.code, state.date, time, shouldBlock);
+      }
+
+      function formatDayUpdateMessage(res, shouldBlock) {
+        var updatedCount = Number(res && res.updatedCount || 0);
+        var skippedApprovedCount = Number(res && res.skippedApprovedCount || 0);
+        var parts = [];
+
+        if (shouldBlock) {
+          parts.push(updatedCount ? "Open slots blocked for the day." : "No open slots needed blocking.");
+        } else {
+          parts.push(updatedCount ? "Day reopened." : "No blocked slots needed reopening.");
+        }
+
+        if (skippedApprovedCount) {
+          parts.push(skippedApprovedCount + " confirmed slot" + (skippedApprovedCount === 1 ? " stays" : "s stay") + " locked.");
+        }
+
+        return parts.join(" ");
+      }
+
+      function updateDay(shouldBlock) {
+        if (!state.code) {
+          setNotice("authNotice", "error", "Load the dashboard first.");
+          return;
+        }
+
+        setDashboardBusy(true);
+        setNotice("dashboardNotice", "info", shouldBlock ? "Blocking whole day..." : "Reopening whole day...");
+
+        google.script.run
+          .withSuccessHandler(function(res) {
+            setDashboardBusy(false);
+            if (!res || !res.ok) {
+              setNotice("dashboardNotice", "error", "Could not update that day.");
+              return;
+            }
+
+            loadDashboard(formatDayUpdateMessage(res, shouldBlock));
+          })
+          .withFailureHandler(function(err) {
+            setDashboardBusy(false);
+            setNotice("dashboardNotice", "error", translateError(err));
+          })
+          .apiAdminSetDateBlocked(state.code, state.date || todayString(), shouldBlock);
+      }
+
+      function humanizeBusinessError(code) {
+        if (code === "SLOT_HAS_APPROVED_BOOKING") {
+          return "That slot already has a confirmed booking.";
+        }
+        if (code === "SLOT_TAKEN") {
+          return "That time already has a confirmed booking.";
+        }
+        if (code === "SLOT_BLOCKED") {
+          return "That time is blocked. Reopen it before confirming the booking.";
+        }
+        if (code === "NOT_FOUND") {
+          return "That booking could not be found.";
+        }
+        if (code === "BAD_STATUS") {
+          return "That status is not valid.";
+        }
+        return code || "Something went wrong.";
+      }
+
+      function escapeHtml(value) {
+        return String(value)
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/\"/g, "&quot;")
+          .replace(/'/g, "&#39;");
+      }
+
+      function bindTabs() {
+        Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(tab) {
+          tab.addEventListener("click", function() {
+            state.filter = tab.getAttribute("data-filter");
+            Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(other) {
+              other.classList.toggle("active", other === tab);
+            });
+            renderBookings();
+          });
+        });
+      }
+
+      function bindActionDelegates() {
+        document.getElementById("slotsGrid").addEventListener("click", function(event) {
+          var btn = event.target.closest(".slotAction");
+          if (!btn || btn.disabled || state.busy) {
+            return;
+          }
+          updateSlot(
+            btn.getAttribute("data-time"),
+            btn.getAttribute("data-block") === "1"
+          );
+        });
+
+        document.getElementById("bookingList").addEventListener("click", function(event) {
+          var btn = event.target.closest("[data-booking-id]");
+          if (!btn || btn.disabled || state.busy) {
+            return;
+          }
+          updateBookingStatus(
+            btn.getAttribute("data-booking-id"),
+            btn.getAttribute("data-status")
+          );
+        });
+
+        document.getElementById("deniedList").addEventListener("click", function(event) {
+          var btn = event.target.closest("[data-booking-id]");
+          if (!btn || btn.disabled || state.busy) {
+            return;
+          }
+          updateBookingStatus(
+            btn.getAttribute("data-booking-id"),
+            btn.getAttribute("data-status")
+          );
+        });
+      }
+
+      function init() {
+        var savedCode = "";
+        try {
+          savedCode = sessionStorage.getItem("escape_admin_code") || "";
+        } catch (err) {
+          savedCode = "";
+        }
+
+        persistAdminCode(savedCode);
+        document.getElementById("adminDate").value = todayString();
+
+        document.getElementById("loadDashboardBtn").addEventListener("click", loadDashboard);
+        document.getElementById("refreshDashboardBtn").addEventListener("click", loadDashboard);
+        document.getElementById("blockDayBtn").addEventListener("click", function() {
+          updateDay(true);
+        });
+        document.getElementById("reopenDayBtn").addEventListener("click", function() {
+          updateDay(false);
+        });
+        document.getElementById("adminDate").addEventListener("change", function() {
+          if (document.getElementById("dashboard").classList.contains("hidden")) {
+            return;
+          }
+          loadDashboard();
+        });
+        bindTabs();
+        bindActionDelegates();
+
+        if (savedCode) {
+          loadDashboard();
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", init);
+    </script>
+  </body>
+</html>
